@@ -22,5 +22,5 @@ while remaining != 1:
     else:
         index += 1
 """
-print(timeit.timeit(x),number=100)
+print(timeit.timeit(x,number=1))
 # print(factors)
