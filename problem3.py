@@ -1,5 +1,6 @@
-#The prime factors of 13195 are 5, 7, 13 and 29.
-#What is the largest prime factor of the number 600851475143 ?
+# The prime factors of 13195 are 5, 7, 13 and 29.
+# What is the largest prime factor of the number 600851475143 ?
+# https://github.com/sympy/sympy/issues/17219
 
 from sympy import prime
 from sympy import isprime
@@ -18,6 +19,5 @@ while remaining != 1:
         factors.append(prime(index))
     else:
         index += 1
-
 
 print(factors)
