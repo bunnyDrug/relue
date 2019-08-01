@@ -8,18 +8,17 @@
 first_number = 91
 second_number = 99
 
+pallys = []
 
 
-for i in range(999, 100, -1):
-    for x in range(999,100,-1):
+for i in range(999, 99, -1):
+    for x in range(999,99,-1):
         product = i * x
         product_rev = str(product)[::-1]
         
         if product_rev == str(product):
-            print("found a pally")
-            print(f"{product}={x}*{i}")
-            exit(0)
-        else:
-            print(f"{x}{i}")
-        
-        
+            pallys.append(product)
+            
+pallys.sort()
+print(pallys.pop())
+
