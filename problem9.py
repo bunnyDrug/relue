@@ -11,39 +11,39 @@ from sympy import prime
 
 
 def make_a(n, m):
-    return m ** 2 - n ** 2
+    return (n ** 2) - (m ** 2)
 
 
 def make_b(n, m):
-    return 2 * m * n
+    return 2 * (m * n)
 
 
 def make_c(n, m):
-    return m ** 2 + n ** 2
+    return (n ** 2) + (m ** 2)
 
 
-# rules:
-# a = m^2 - n^2, b = 2mn, c = m^2 + n^2
-# where m > n and both numbers are prime
+def rules(x):
+    return [
+            make_a(x[0], x[1]),
+            make_b(x[0], x[1]),
+            make_c(x[0], x[1])
+            ]
 
+def product(number):
+    return reduce((lambda x, y: x * y), number)
 
-# limit = 50  # not sure how far to go, lets try this for now.
-only_prime_numbers = list(range(1, 100))
+n_and_m = ([2,1],[3,2],[6,3],[9,6],[6,1],[7,1],[8,1],[9,1])
 
-n_and_m = map(
-    lambda counter: list(only_prime_numbers)[counter : counter + 2],
-    range(0, len(only_prime_numbers) - 1),
-)
+somelist = []
+for i in range (0, 100):
+    for x in range(0,100):
+        somelist.append([i,x])
 
+# print(somelist)
+filteredlist = [(n,m) for n, m in somelist if n > m]
 
-triples = map(
-    lambda x: [make_a(x[0], x[1]), make_b(x[0], x[1]), make_c(x[0], x[1])],
-    n_and_m,
-)
+triples = map(rules, filteredlist)
 
+sum_to_1000 = filter(lambda x: sum(x) == 1000, triples)
 
-
-sum_to_100 = map(lambda x: sum(x), triples)
-
-# print(list(triples))
-print(list(sum_to_100))
+print(sum_to_1000) # [[375, 200, 425]] == 31,875,000
